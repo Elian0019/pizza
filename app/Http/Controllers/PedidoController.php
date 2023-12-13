@@ -54,7 +54,7 @@ class PedidoController extends Controller
         $userId = auth()->user()->id;
         $clientes = Cliente::all();
         $cliente=$clientes->where('id_usuario',$userId)->first();
-       
+
         $pedidos=Pedido::select(
             'pedidos.id',
             'pedidos.fecha',
@@ -73,12 +73,12 @@ class PedidoController extends Controller
         )
         ->join('ubicacion','pedidos.id_ubicacion','=','ubicacion.id')
         ->join('clientes','pedidos.id_cliente','=','clientes.id')
-   
+
         ->where('pedidos.estado','=',1)
         ->where('pedidos.id_cliente','=', $cliente['id'])
         ->orderBy('pedidos.id','asc')
         ->get();
-      
+
         return view('mispedidos',compact('pedidos'));
     }
 
@@ -94,6 +94,26 @@ class PedidoController extends Controller
         $pedido->id_repartidor = NULL;
         $pedido->update();
         return back();
+    }
+    public function verpedido($id){
+        $pedido_nota= Pedido::all()->where('id','=',$id)->first();
+        $mydate=$pedido_nota->fecha;
+        $total=$pedido_nota->montototal;
+        $pedidos=DetallePedido::select(
+            'detalle_pedidos.*',
+            'productos.nombre as pnombre',
+            'productos.precio as pprecio',
+            'productos.descripcion as pdescripcion'
+        )
+        ->join('producto_almacen','detalle_pedidos.id_productodealmacen','=','producto_almacen.id')
+        ->join('productos','producto_almacen.id_producto','=','productos.id')
+        ->join('almacenes','producto_almacen.id_almacen','=','almacenes.id')
+        ->where('detalle_pedidos.id_pedido','=',$id)
+        ->get();
+
+        $clienteNombre = Cliente::findOrFail($pedido_nota['id_cliente'])->nombre;
+//
+        return view('administracion.pedidos.detallePedido',compact('mydate','total','pedidos','clienteNombre'));
     }
 
     public function store(Request $request){
@@ -157,20 +177,20 @@ class PedidoController extends Controller
             //GUARDAR DERALLE PEDIDO
             $error =$this->guardardetallepedido( $id_pedido );
             if ($error) {
-            
+
             }else{
                 //CONFIRMAR GUARDADO
                 // Ubicacion::findOrFail();
             }
             //$res['dato'] =  $this->FunctionName('3','2',4);
-            
+
              $res['error'] = $error;
             return json_encode($res);
         }
     }
 
     public function guardardetallepedido($id_pedido)
-    { 
+    {
         try {
             foreach (\Cart::getContent() as $item) {
                 $productalmacen = $this->producto_almacen->buscar_mi_almacen($item->id,$item->quantity);
@@ -200,27 +220,27 @@ class PedidoController extends Controller
         $userId = auth()->user()->id;
         $empleado=Empleado::all();
         $empleado=$empleado->where('id_usuario',$userId)->first();
-        
+
         if ($empleado) {
             $pedido = Pedido::findOrFail($request->id_pedido);
             $pedido->id_empleado = $empleado['id'];
             $pedido->id_repartidor = $request->id_repartidor;
             $pedido->estadodelpedido = 'pendiente';
             $pedido->update();
-       
+
         }
         return  back();
     }
     public  function FunctionName($id_productodealmacen, $id_producto, $cantidad)
     {
         $producto_almacen =ProductoAlmacen::findOrFail($id_productodealmacen);
-       
+
         if($producto_almacen->stock >= $cantidad){
             $stock_actualizado = $producto_almacen->stock - $cantidad;
             $producto_almacen->stock = $stock_actualizado;
             $producto_almacen->update();
         }else{
-         
+
         //    $id_prod_alm = $this->producto_almacen->id_prod_alm($id_producto);
         //    foreach ($id_prod_alm as $row) {
         //           if ($row['id']) {
@@ -231,7 +251,7 @@ class PedidoController extends Controller
         //    }
              return "se modifico varios el stocks de registros";
         }
-   
+
     }
 
 }

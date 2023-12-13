@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <h1 class="m-0 text-dark"> Pedidos realizados</h1>
           </div><!-- /.col -->
-         
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -25,7 +25,7 @@
         {{-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> --}}
             <div class="row row-cols-1 row-cols-md-2  row-cols-lg-3 g-2">
                 @php $c=1; @endphp
-                @foreach ($pedidos as $row)   
+                @foreach ($pedidos as $row)
                     <div class="col">
                         <div class="card shadow-md card-dark card-outline">
                             <div class="card-body">
@@ -75,11 +75,9 @@
                                         <button class="btn btn-sm btn-danger" rel="tooltip" data-placement="top" title="¿Pedido entregado?" onclick="obtenerIdpedido({{$row->id}})" data-toggle="modal" data-target="#cancelarpedido">Cancelar Pedido</button>
                                       @endif
                                     </div>
-                                    <form action="#" method="POST">
-                                      @csrf
-                                      <input type="hidden" id="producto_id"name="producto_id" value="{{$row->id}}">
-                                      <button class="btn btn-sm btn-dark" type="button" onclick="addproducto({{$row->id}})" name="btn" onclick="#" >Ver detalle</button>
-                                    </form>
+
+                                      {{-- <button class="btn btn-sm btn-dark" type="button" onclick="addproducto({{$row->id}})" name="btn" onclick="#" >Ver detalle</button> --}}
+                                      <button onClick="verDetalle({{$row->id}})" class="btn btn-sm btn-dark" rel="tooltip" data-placement="top" title="ver detalle" >Ver Detalle</button>
                                 </div>
                             </div>
                         </div>
@@ -98,10 +96,10 @@
     <div class="modal fade" id="cancelarpedido"  tabindex="-1"aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-  
+
           <div class="modal-body py-3">
               <form method="POST" action="{{route('pedido.cancelar')}}" autocomplete="off" >
-                @method('PUT')  
+                @method('PUT')
                 @csrf
                   <input type="hidden" id="id_pedido" name="id_pedido" class="mb-0">
                   <div class="form-group  mb-4">
@@ -127,5 +125,16 @@
     function obtenerIdpedido(id_pedido) {
         $("#id_pedido").val(id_pedido);
     }
-  </script>
+
+    var miPopup
+
+    function verDetalle(id) {
+        // var url="{{ asset('venta.detalle'," + id+ ")}}";
+
+        let url = '{{url('')}}/pedido/verdetallepedido/'+id;
+
+        miPopup = window.open(url, "miwin", "width=600,height=400,scrollbars=yes")
+        miPopup.focus()
+    }
+</script>
   @endsection

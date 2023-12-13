@@ -19,8 +19,8 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all()->where('estado',1);
-        
-        return view('productos.index',compact('productos'));
+        $categorias = Categoria::all()->where('estado',1);
+        return view('productos.index',compact('productos','categorias'));
     }
 
     public function create()
@@ -50,7 +50,7 @@ class ProductoController extends Controller
         $producto->id_categoria = $request->id_categoria;
         $producto->id_proveedor = $request->id_provedor;
         $producto->save();
-        
+
         //script para subir una imagen
         if ($request->hasFile("img_producto")) {//existe un campo de tipo file?
             $imagen = $request->file("img_producto"); //almacenar imagen en variable
@@ -114,14 +114,15 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id);
         $producto->estado = 0;
         $producto->update();
+        $categorias = Categoria::all()->where('estado',1);
         $productos = Producto::all()->where('estado',1);
-        return view('productos.index',compact('productos'));
+        return view('productos.index',compact('productos','categorias'));
     }
 
     public function deletes()
-    {
+    { $categorias = Categoria::all();
         $productos = Producto::all()->where('estado',0);
-        return view('productos.eliminados',compact('productos'));
+        return view('productos.eliminados',compact('productos','categorias'));
     }
 
     public function restore($id)
@@ -155,7 +156,7 @@ class ProductoController extends Controller
     $i=0;
     $p=0;
     while ($i < $n){
-      if($num[$i]==1){$p=$p+1;}  
+      if($num[$i]==1){$p=$p+1;}
       $i=$i+4;
     }
         if($p != 0){
@@ -175,7 +176,7 @@ class ProductoController extends Controller
             $producto = Producto::findOrFail($request->id_producto);
             $producto->recetado = 1;
             $producto->update();
-            
+
             return redirect('producto');
         }else{
             return "no selecciono ningun";
@@ -196,7 +197,7 @@ class ProductoController extends Controller
          }else {
             return "lo siento no tiene creado una receta";
          }
-    } 
+    }
 
     public function destroyreceta(Producto $producto)
     {
@@ -209,5 +210,5 @@ class ProductoController extends Controller
         $producto->update();
        return redirect('/producto');
     }
-    
+
 }

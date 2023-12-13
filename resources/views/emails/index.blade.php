@@ -10,7 +10,7 @@
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"> Enviar Correo</h1>
         </div><!-- /.col -->
-        
+
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
@@ -24,17 +24,17 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8">
 
-  
 
 
-<div class="card shadow-lg card-danger card-outline mb-3">
-    <div class="card-header  text-center text-danger"><b>FORMULARIO</b></div>
-    <div class="card-body"> 
+
+<div class="card shadow-lg card-dark card-outline mb-3">
+    <div class="card-header  text-center text-dark"><b>FORMULARIO</b></div>
+    <div class="card-body">
 
         <form action="{{route('contactanos.store')}}" method="POST" class="needs-validation" novalidate>
         @csrf
             <div class="mb-3">
-              <label for="asunto" class="form-label fw-bold text-danger">Asunto:</label>
+              <label for="asunto" class="form-label fw-bold text-dark">Asunto:</label>
               <input class="form-control" type="text" name="asunto"id="asunto" placeholder="Ingrese el Asunto" required>
               <div class="invalid-feedback">
                 Porfavor ingrese el asunto.
@@ -42,7 +42,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="name" class="form-label fw-bold text-danger">Nombre:</label>
+                <label for="name" class="form-label fw-bold text-dark">Nombre:</label>
                 <input class="form-control" type="text" name="name"id="name" placeholder="Ingrese su nombre" required>
                 <div class="invalid-feedback">
                    Porfavor ingrese su nombre.
@@ -54,7 +54,7 @@
             @enderror
 
             <div class="mb-3">
-                <label for="correo" class="form-label fw-bold text-danger">Correo remitente:</label>
+                <label for="correo" class="form-label fw-bold text-dark">Correo remitente:</label>
                 <input class="form-control" type="email" name="correo"id="correo" placeholder="Ingrese su correo" required>
                 <div class="invalid-feedback">
                     Porfavor ingrese su correo.
@@ -66,7 +66,7 @@
             @enderror
 
           <div class="mb-3">
-              <label for="correodestino" class="form-label fw-bold text-danger">Correo destinatario:</label>
+              <label for="correodestino" class="form-label fw-bold text-dark">Correo destinatario:</label>
               <input class="form-control" type="email" name="correodestino"id="correodestino" placeholder="Ingrese su correo" required>
               <div class="invalid-feedback">
                   Porfavor ingrese el correo destino.
@@ -78,7 +78,7 @@
             @enderror
 
             <div class="mb-3">
-                <label for="mensaje" class="form-label fw-bold text-danger">Mensaje:</label>
+                <label for="mensaje" class="form-label fw-bold text-dark">Mensaje:</label>
                 <textarea class="form-control" id="mensaje" type="text" name="mensaje" placeholder="Ingrese su Mensaje."rows="3" required></textarea>
                 {{-- <div class="invalid-feedback"> --}}
                 <div class="invalid-feedback">
@@ -90,7 +90,7 @@
                 <p><strong>{{$message}}</strong></p>
             @enderror
             <div>
-               <center><button class="btn btn-danger" onclick="" type="submit">Enviar Mensaje</button></center>
+               <center><button class="btn btn-dark" onclick="" type="submit">Enviar Mensaje</button></center>
               </div>
         </form>
             @if (Session::has('info'))
@@ -105,7 +105,7 @@
             @else
               {{-- <div class="row ">
                   <div class="col-md-12">
-                      <div class="alert alert-danger my-3 mb-2 alert-dismissible">
+                      <div class="alert alert-dark my-3 mb-2 alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <strong><i class="icon fas fa-ban"></i> Error!</strong> No se envio el mensaje
                       </div>

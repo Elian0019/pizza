@@ -30,9 +30,10 @@
                                         <tr>
                                             <th width="5%"> id </th>
                                             <th> nombre </th>
+                                            <th> categoria </th>
                                             <th> descripcion </th>
                                             <th> precio </th>
-                                            <th> stock </th>
+
                                             <th width="4%"></th>
                                         </tr>
                                     </thead>
@@ -41,9 +42,16 @@
                                         <tr>
                                             <td>{{$producto->id}}</td>
                                             <td>{{$producto->nombre}}</td>
+                                            <td>
+                                                @foreach ($categorias as $categoria)
+                                                    @if ($categoria->id == $producto->id_categoria)
+                                                        {{ $categoria->nombre }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td>{{$producto->descripcion}}</td>
                                             <td>{{$producto->precio}}</td>
-                                            <td>{{$producto->stock}}</td>
+
                                             <td class="text-center">
                                                 <a href="#" data-href="{{url('producto/restaurar/'.$producto->id)}}" rel="tooltip" title="Restaurar" data-toggle="modal" data-target="#modal-confirma" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-alt-circle-up"></i></a>
                                             </td>

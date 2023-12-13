@@ -6,7 +6,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      
+
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1 class="m-0 text-dark text-left">  Nota Venta </h1>
@@ -17,7 +17,7 @@
 
     <!-- Main content -->
     <div class="content">
-      
+
         <div class="row">
             <div class="col-12">
               <div class="card card-outline card-danger">
@@ -26,9 +26,27 @@
                 </div>
 
                     <div class="card-body">
-                        
+
                         @if (count(Cart::getContent()))
+                        <div class="col-sm-6">
+
+                          </div>
+
                         <div class="d-flex justify-content-end">
+                            <div class="form-group">
+                                    <select class="form-control form-control-sm"  id="id_cliente" name="id_cliente"  required>
+                                    <option selected disabled value="">Seleccione un cliente</option>
+                                        @foreach ($clientes as $cliente)
+                                        <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                        {{-- <option value="1" selected>publico en general</option> --}}
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">Seleccione una categoría.</div>
+                                    @error('id_cliente')
+                                    <small class="text-danger"> {{$message}}</small>
+                                    @enderror
+                        </div>
+                        &nbsp;&nbsp;
                             <div class="form-group">
                                 <form action="{{route('cart.clear')}}"method="POST">
                                     @csrf
@@ -37,7 +55,7 @@
                                 </div>
                         </div>
                         @endif
-                        
+
                       <div class="table-responsive">
                         <table id="tabla-lista" class="table table-bordered table-sm table-hover mb-0">
                             <thead class="text-center">
@@ -59,21 +77,21 @@
                                     <td>{{$c++;}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{number_format($item->price,2)}}</td>
-                                    
+
                                     <td>
                                         <form id="form-update" action="{{ route('cart.update') }}" method="POST">
                                           @csrf
                                             <div class="input-group input-group-sm mb-0">
-                                         
+
                                               <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                               <input type="number"class="form-control"style="width:25px;" id="quantity" name="quantity" title="cantidad"value="{{ $item->quantity }}" min="1" pattern="^[1-9]+">
                                               <span class="input-group-append">
                                                   <button type="submit"class="btn btn-success btn-flat" title="Lista de producto" data-toggle="modal" data-target="#lista"><i class="fa fa-edit"></i></button>
                                               </span>
-                                          </div> 
+                                          </div>
                                       </form>
                                     </td>
-                                 
+
                                     <td>{{$item->getPriceSum()}}</td>
                                     <td class="py-1 align-middle text-center">
                                       <form id="form-del" action="{{route('cart.removeitem')}}"method="POST">
@@ -83,13 +101,13 @@
                                       </form>
                                     </td>
                                 </tr>
-                               
+
                                 @empty
                                 <tr>
                                     <td colspan="6" class="text-center">Lista Vacia</td>
                                 </tr>
                               @endforelse
-                             
+
                             </tbody>
                             {{-- @if (count(Cart::getContent()))
                             <tfoot>
@@ -126,7 +144,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                       </div><!-- /.row -->
                       <div class="row">
                         <div class="col">
@@ -161,17 +179,17 @@
                                 <p class="card-text mb-2 text-right">Stock:{{$row->totalstock}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
-                                      
+
                                   </div>
                                     <form action="{{route('cart.add')}}" method="POST">
                                       @csrf
                                       <input type="hidden" id="producto_id"name="producto_id" value="{{$row->id}}">
                                       {{-- <button class="btn btn-sm btn-outline-warning" type="submit" name="btn" onclick="#" >Agregar al carrito</button> --}}
                                       <button class="btn btn-sm btn-danger" type="button" onclick="addproducto({{$row->id}})" name="btn" onclick="#" >Agregar Producto</button>
-                                      
+
                                       {{-- <button class="btn btn-sm btn-outline-warning btn-submit" type="submit" >Agregar al carrito</button> --}}
                                     </form>
-                                        
+
                                 </div>
                             </div>
                         </div>
@@ -212,11 +230,11 @@
 
 
 
-    function guardarpedido() { 
+    function guardarpedido() {
 
 
         let url = '{{url('')}}/venta/store';
-
+        var id_cliente = document.getElementById("id_cliente").value;
         Swal.fire({
             title: '¿Desea Concluir la Venta?',
             text: "¡No podrás revertir esto!",
@@ -233,6 +251,7 @@
                 method: "POST",
                 data: {
                     "_token"          :"{{ csrf_token() }}",
+                     "id_cliente"          :id_cliente,
                 },
                 success: function(resultado){
                     if (!resultado) {
@@ -241,7 +260,7 @@
                     else{
                         var resultado= JSON.parse(resultado);
                         if(resultado.error){
-                            mostrarerror('error','Error de stock vuelva a intentar más tarde') 
+                            mostrarerror('error','Error de stock vuelva a intentar más tarde')
                         }else{
                        // $('#completa_pedido').prop('disabled', true);
                         mostrarerror('success','Datos registrados correctamente');
@@ -249,7 +268,7 @@
                         }
                     }
                 },
-                
+
             });
             }else{
 

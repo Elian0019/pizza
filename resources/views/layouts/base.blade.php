@@ -184,14 +184,14 @@
             </a>
           </li>
 
-        <!--   <li class="nav-item">
+          <li class="nav-item">
             <a href="{{route('pedido.index')}}" class="nav-link">
               <i class="nav-icon fas fa-shipping-fast"></i>
               <p>
                 Pedidos
               </p>
             </a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a href="{{route('venta.index')}}" class="nav-link">
               <i class="nav-icon fas fa-shipping-fast"></i>
@@ -239,13 +239,13 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a href="{{route('provedor')}}" class="nav-link">
                  <i class="far fa-dot-circle nav-icon"></i>
                   <p>Provedores</p>
                 </a>
               </li>
-
+            -->
             </ul>
           </li>
         </ul>

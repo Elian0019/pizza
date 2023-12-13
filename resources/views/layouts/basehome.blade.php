@@ -55,13 +55,13 @@
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <<!--<li class="nav-item">
             <a href="{{ url('/') }}" class="nav-link">Productos</a>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a href="{{ route('contactanos.index') }}" class="nav-link">Enviar SMS</a>
           </li>
-          <li class="nav-item dropdown">
+          <!--<li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categorias</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
 
@@ -77,7 +77,7 @@
 
               <li class="dropdown-divider"></li>
 
-              <!-- Level two dropdown-->
+              Level two dropdown-->
              {{-- <li class="dropdown-submenu dropdown-hover">
                 <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Almacenes</a>
                 <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
@@ -94,10 +94,9 @@
                   @endif
 
                 </ul>
-              </li>--}}
-              <!-- End Level two -->
+              </li>
             </ul>
-          </li>
+          </li>--}}
         </ul>
 
         <!-- SEARCH FORM -->
@@ -115,7 +114,6 @@
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        Notifications Dropdown Menu -->
         @guest
         @else
           <li class="nav-item dropdown">
@@ -125,7 +123,7 @@
                 <a class="nav-link"  href="{{route('pedido.ordenes')}}">
                   <i class="fas fa-hard-hat"> Pedidos</i>
                 </a>
-              </li> Notifications Dropdown Menu -->
+              </li> <!--Notifications Dropdown Menu -->
               @endif
               @if (Auth::user()->hasRole('Administrador'))
                 <li class="nav-item">
@@ -172,10 +170,10 @@
         @guest
            <!-- Iniciar Sesion -->
               <li  class="nav-item dropdown">
-                <a  class="nav-link" data-toggle="dropdown" href="#">
-                  <i class="fas fa-user-cog"></i>
+                <a href="{{ route('login') }}" class="dropdown-item">
+                    <i class="fas fa-sign-in-alt mr-2"></i>{{ __('Login') }}
                 </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+             <!--  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
                 @if (Route::has('login'))
                   <div class="dropdown-divider"></div>
@@ -189,17 +187,19 @@
                       <i class="fas fa-address-card mr-2"></i>{{ __('Register') }}
                   </a>
                 @endif
-              </div>
+              </div> -->
             </li>
         @else
 
        <!-- NAV PERFIL -->
         <li class="nav-item dropdown user-menu">
-          <a href="#" class="nav-link" data-toggle="dropdown">
-            <i class="fas fa-user-cog"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-lx dropdown-menu-right">
-            <!-- User image -->
+            <a href="{{asset('perfil')}}/{{Auth::user()->id}}" class="btn btn-default btn-flat text-dark"><i class="fas fa-user mr-2"></i>Perfil</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right text-dark"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+          <!--  <ul class="dropdown-menu dropdown-menu-lx dropdown-menu-right">
+
             <li class="user-header" style="background: url({{asset('/vendor/images/photo1.png')}}) center center;">
               <img src="{{asset('/vendor/images/user.png')}}" class="img-circle elevation-2" alt="User Image">
               <p class="text-white">
@@ -208,7 +208,7 @@
                 <small clasS="text-muted text-white">Montero - {{date('d-m-Y');}} </small>
               </p>
             </li>
-            <!-- Menu Footer-->
+
             <li class="user-footer">
               <a href="{{asset('perfil')}}/{{Auth::user()->id}}" class="btn btn-default btn-flat text-dark"><i class="fas fa-user mr-2"></i>Perfil</a>
               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-default btn-flat float-right text-dark"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión</a>
@@ -216,7 +216,7 @@
                   @csrf
               </form>
             </li>
-          </ul>
+          </ul>User image -->
         </li>
          <!-- FIN DE NAV PERFIL -->
       @endguest

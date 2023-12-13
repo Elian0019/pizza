@@ -17,17 +17,19 @@ use Illuminate\Support\Facades\Auth;
 class VentaController extends Controller
 {
     protected $producto_almacen;
+    protected $clientes;
 
     public function __construct()
     {
         $this->producto_almacen = New ProductoAlmacen();
+        $this->clientes = New Cliente();
     }
 
     public function index(){
        // $ventas = Venta::all()->where('estado',1);
         $ventas=Venta::select(
             'ventas.*',
-            'users.name'    
+            'users.name'
         )
         ->join('users','ventas.id_usuario','=','users.id')
         ->where('ventas.estado','=',1)
@@ -55,36 +57,44 @@ class VentaController extends Controller
             ->where('producto_almacen.estado','=',1)
             ->where('producto_almacen.stock','>',0)
             ->distinct()->get();
-  
+
         $almacenes=ProductoAlmacen::select(
             'almacenes.sigla'
          )
          ->join('almacenes','producto_almacen.id_almacen','=','almacenes.id')
          ->join('productos','producto_almacen.id_producto','=','productos.id')
          ->where('producto_almacen.estado','=',1)
-         ->distinct()->get(); 
- 
-         return view('administracion.ventas.nota_venta',compact('productos','categorias','almacenes'));
+         ->distinct()->get();
+
+         $clientes =$this->clientes->where('estado',1)->get();
+
+
+         return view('administracion.ventas.nota_venta',compact('productos','categorias','almacenes','clientes'));
     }
 
     public function store(Request $request){
-       
-        
+        $request->validate([
+            'id_cliente'=>'required',
+        ]);
+
+
+
              $venta = new Venta();
              $venta->fecha_hora        =  date('y-n-d h:i:s ');
              $venta->monto_total       =   Cart::getTotal();
-             $venta->id_usuario      =  Auth::user()->id;;
+             $venta->id_usuario      =  Auth::user()->id;
+             $venta->id_cliente = $request->id_cliente;
              $venta->save();
             $id_venta=$venta->id;
             $error =$this->guardardetalleVenta( $id_venta );
-            
+
             $res['error'] = $error;
             return json_encode($res);
-        
+
     }
 
     public function guardardetalleVenta($id_venta)
-    { 
+    {
         try {
             foreach (\Cart::getContent() as $item) {
                 $productalmacen = $this->producto_almacen->buscar_mi_almacen($item->id,$item->quantity);
@@ -111,13 +121,17 @@ class VentaController extends Controller
         $ventas=DetalleVenta::select(
             'detalle_ventas.*',
             'productos.nombre as pnombre',
-            'productos.precio'  
+            'productos.precio'
         )
         ->join('producto_almacen','detalle_ventas.id_productodealmacen','=','producto_almacen.id')
         ->join('productos','producto_almacen.id_producto','=','productos.id')
         ->join('almacenes','producto_almacen.id_almacen','=','almacenes.id')
         ->where('detalle_ventas.id_venta','=',$id_venta)
         ->get();
+
+        $clienteNombre = Cliente::findOrFail($venta_nota['id_cliente'])->nombre;
+        // dd($clienteNombre);
+
         $pdf = new Fpdf('P','mm',array(200,200));
             $sw=1;
             $contador = 1;
@@ -128,7 +142,7 @@ class VentaController extends Controller
                     $pdf->SetMargins(5,5,5);
                     $pdf->SetTitle("Detalle Venta");
                     $pdf->SetFont('Arial','B',11);
-                    $pdf->image(asset('vendor/adminlte/dist/img/AdminLTELogo.png'),5,4,9,8,'PNG');
+                     $pdf->image(asset('vendor/adminlte/dist/img/AdminLTELogo2.png'),5,4,9,8,'PNG');
                     $pdf->Cell(190,4,'',0,1,'C');
                     $pdf->Cell(190,4,'Nota De Detalle',0,1,'C');
                     $pdf->Ln(6);
@@ -137,7 +151,7 @@ class VentaController extends Controller
                     $pdf->SetFont('Arial','B',9);
                     $pdf->Cell(17,5,utf8_decode('Dirección: '),0,0,'L');
                     $pdf->SetFont('Arial','',9);
-                    $pdf->Cell(50,5,'Montero Panaderia VICTORIA',0,1,'L');
+                    $pdf->Cell(50,5,'Montero Pizzeria Delimar',0,1,'L');
                     $pdf->SetFont('Arial','B',9);
                     $pdf->Cell(22,5,utf8_decode('Fecha y hora: '),0,0,'L');
                     $pdf->SetFont('Arial','',9);
@@ -146,8 +160,14 @@ class VentaController extends Controller
                     $pdf->Cell(22,5,utf8_decode('Remitente: '),0,0,'L');
                     $pdf->SetFont('Arial','',9);
                     $pdf->Cell(50,5,''.Auth::user()->name.''.' '.''.Auth::user()->apellidos.'',0,1,'L');
+                    $pdf->SetFont('Arial','B',9);
+                    $pdf->Cell(22,5,utf8_decode('Cliente: '),0,0,'L');
+                    $pdf->SetFont('Arial','',9);
+                    $pdf->Cell(50,5,$clienteNombre,0,1,'L');
+
                     $pdf->Cell(70,2,'',0,1,'C');
-                   // $pdf->SetFont('Arial','',9); 
+
+                   // $pdf->SetFont('Arial','',9);
                     $pdf->SetFont('Arial','B',11);
                     $pdf->Ln(10);
                     $pdf->SetFillColor(2,157,200);//Fondo verde de celda
@@ -177,11 +197,11 @@ class VentaController extends Controller
                 $pdf->Cell(20,5,$row['precio'],'LR',0,'L',true);
                 $pdf->Cell(20,5,$row['cantidad'],'LR',0,'L',true);
                 $pdf->Cell(43,5,utf8_decode($row['subtotal']),'LR',1,'L',true); // L= IZQUIERDA R= DERECHA
-              
+
                 if ($contador%24==0){$sw=1;}
                 $contador++;
             }
-           
+
             $pdf->ln();
             $pdf->Cell(17,5,utf8_decode('Gracias por su compra: '),0,0,'L');
             $pdf->ln();
@@ -199,5 +219,24 @@ class VentaController extends Controller
         return redirect(route('venta.index'));
     }
 
-    
+    public function verdetalle($id){
+        $venta_nota= Venta::all()->where('id','=',$id)->first();
+        $mytime=$venta_nota->fecha_hora;
+        $total=$venta_nota->monto_total;
+        $ventas=DetalleVenta::select(
+            'detalle_ventas.*',
+            'productos.nombre as pnombre',
+            'productos.precio as pprecio',
+            'productos.descripcion as pdescripcion'
+        )
+        ->join('producto_almacen','detalle_ventas.id_productodealmacen','=','producto_almacen.id')
+        ->join('productos','producto_almacen.id_producto','=','productos.id')
+        ->join('almacenes','producto_almacen.id_almacen','=','almacenes.id')
+        ->where('detalle_ventas.id_venta','=',$id)
+        ->get();
+
+        $clienteNombre = Cliente::findOrFail($venta_nota['id_cliente'])->nombre;
+//
+        return view('administracion.ventas.detalleVentas',compact('mytime','total','ventas','clienteNombre'));
+    }
 }

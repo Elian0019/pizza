@@ -26,6 +26,8 @@
                           <!-- /.card-header -->
                           <div class="card-body">
                               <div class="d-flex justify-content-end">
+                                <a href="javascript:window.open('http://localhost/pos/public/');"> link​​​​​​​​​​​​​​​​​ </a>
+
                                   <div class="form-group">
                                       <a class="btn btn-info btn-sm" href="{{ route('venta.generar') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Nueva Venta</a>
                                       {{--<a class="btn btn-danger btn-sm" href="{{ asset('administracion/cliente/eliminados') }}"><i class="far fa-trash-alt"></i>&nbsp;Eliminados</a>--}}
@@ -50,8 +52,9 @@
                                               <td>{{ $venta->name }}</td>
                                               <td class="py-1 align-middle text-center">
                                                 <div class="btn-group btn-group-sm">
-                                                  <a href="{{ route('venta.detalle',$venta->id)}}" class="btn btn-danger" rel="tooltip" data-placement="top" title="pdf detalle" ><i class="fas fa-file-pdf"></i></a>
-                                                  {{--<a href="{{route('venta.delete',$venta->id)}}" class="btn btn-warning" rel="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash"></i></a>--}}
+                                                  {{-- <a href="{{ route('venta.detalle',$venta->id)}}" class="btn btn-danger" rel="tooltip" data-placement="top" title="pdf detalle" ><i class="fas fa-file-pdf"></i></a> --}}
+                                                  <button onClick="verDetalle({{$venta->id}})" class="btn btn-danger" rel="tooltip" data-placement="top" title="pdf detalle" ><i class="fas fa-file-pdf"></i></button>
+
                                                 </div>
                                               </td>
                                           </tr>
@@ -98,5 +101,18 @@
     <!-- /.modal-dialog -->
   </div>
     <!-- /.modal -->
+
+    <script>
+        var miPopup
+
+        function verDetalle(id) {
+            // var url="{{ asset('venta.detalle'," + id+ ")}}";
+
+            let url = '{{url('')}}/venta/verdetalle/'+id;
+
+            miPopup = window.open(url, "miwin", "width=600,height=400,scrollbars=yes")
+            miPopup.focus()
+        }
+    </script>
 
 @endsection

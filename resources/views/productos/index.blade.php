@@ -45,9 +45,9 @@
                                         <th width="8%">Imagen</th>
                                         <th width="5%"> id </th>
                                         <th> nombre </th>
+                                        <th> categoria </th>
                                         <th> descripcion </th>
                                         <th> precio </th>
-                                        <th> stock </th>
                                         <th width="7%">Acción</th>
                                       </tr>
                                   </thead>
@@ -64,9 +64,16 @@
                                           <td class="text-center"><img width="50"height="30"src="{{asset($imagen.'?'.time())}}"/></td>
                                           <td>{{$producto->id}}</td>
                                           <td>{{$producto->nombre}}</td>
+                                          <td>
+                                            @foreach ($categorias as $categoria)
+                                                @if ($categoria->id == $producto->id_categoria)
+                                                    {{ $categoria->nombre }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+
                                           <td>{{$producto->descripcion}}</td>
                                           <td>{{$producto->precio}}</td>
-                                          <td>{{$producto->stock}}</td>
                                           <td class="py-1 align-middle text-center">
                                             <div class="btn-group btn-group-sm">
 

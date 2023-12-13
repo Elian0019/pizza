@@ -34,7 +34,7 @@
           <div class="col-sm-6">
             <h1 class="m-0 text-dark"> Detalle Pedido</h1>
           </div><!-- /.col -->
-          
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -42,14 +42,14 @@
 
     <!-- Main content -->
     <div class="content">
-    
+
       <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card card-danger card-outline shadow-md">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        
+
                         @if (count(Cart::getContent()))
                         <div class="d-flex justify-content-end">
                             <div class="form-group">
@@ -60,7 +60,7 @@
                                 </div>
                         </div>
                         @endif
-                        
+
                       <div class="table-responsive">
                         <table id="tabla" class="table table-bordered table-sm table-hover mb-0">
                             <thead class="text-center">
@@ -82,21 +82,21 @@
                                     <td>{{$c++;}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{number_format($item->price,2)}}</td>
-                                    
+
                                     <td>
                                         <form id="form-update" action="{{ route('cart.update') }}" method="POST">
                                           @csrf
                                             <div class="input-group input-group-sm mb-0">
-                                         
+
                                               <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                               <input type="number"class="form-control"style="width:25px;" id="quantity" name="quantity" title="cantidad"value="{{ $item->quantity }}" min="1" pattern="^[1-9]+">
                                               <span class="input-group-append">
                                                   <button type="submit"class="btn btn-success btn-flat" title="Lista de producto" data-toggle="modal" data-target="#lista"><i class="fa fa-edit"></i></button>
                                               </span>
-                                          </div> 
+                                          </div>
                                       </form>
                                     </td>
-                                 
+
                                     <td>{{$item->getPriceSum()}}</td>
                                     <td class="py-1 align-middle text-center">
                                       <form id="form-del" action="{{route('cart.removeitem')}}"method="POST">
@@ -106,13 +106,13 @@
                                       </form>
                                     </td>
                                 </tr>
-                               
+
                                 @empty
                                 <tr>
                                     <td colspan="6" class="text-center">Carrito vacio</td>
                                 </tr>
                               @endforelse
-                             
+
                             </tbody>
                             {{-- @if (count(Cart::getContent()))
                             <tfoot>
@@ -159,10 +159,10 @@
 
             @if (count(Cart::getContent()))
                 <div class="card card-default shadow-md">
-                   
+
                   <div class="card-header">
                     <h3 class="card-title  w-100 text-center font-weight-bold text-danger">MI PEDIDO</h3>
-                  
+
                    </div><!--/.card-header-->
                     <div class="card-body">
                       @guest
@@ -185,7 +185,7 @@
                             </div>
                             <div class="col">
                               <div class="form-group">
-                                <label>Nombre</label> 
+                                <label>Nombre</label>
                                 <input class="form-control form-control-sm me-md-8" id="nombre" name="nombre" type="text"  value="{{ Auth::user()->name }}" disabled />
                               </div>
                             </div>
@@ -195,14 +195,14 @@
                                 <input class="form-control form-control-sm" id="apellidos" name="apellidos" type="text"  value="{{$cliente['apellidos']}}" disabled/>
                               </div>
                             </div>
-                         
+
                               <div class="col">
                                 <div class="form-group">
                                   <label class="text-center">Telefono</label>
                                   <input class="form-control form-control-sm" id="telefono" name="telefono" type="tel" value="{{$cliente['telefono']}}" disabled/>
                                 </div>
                               </div>
-                              
+
                               <div class="col">
                                 <div class="form-group">
                                   <label>Fecha</label>
@@ -221,14 +221,14 @@
                                   </div>
                                 </div>
                               </div>
- 
+
                               <div class="col">
                                 <div class="form-group">
                                   <label>Latitud</label>
                                   <input class="form-control form-control-sm" id="latitud_y" name="latitud_y" type="text"  value="" disabled/>
                                 </div>
                               </div>
-                           
+
                               <div class="col">
                                 <div class="form-group">
                                   <label class="text-center">Longitud</label>
@@ -244,12 +244,12 @@
                                   </div>
                                 </div>
                               </div>
-                            </div> 
+                            </div>
 
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="form-group">
-                                  <label>Referencia de la ubicación</label> 
+                                  <label>Referencia de la ubicación</label>
                                   <textarea class="form-control" id="referencia" name="referencia" rows="3"  pattern=".*\S+.*" required></textarea>
                                 </div>
                               </div>
@@ -270,7 +270,7 @@
                     @endif
 
                   </div><!--/body card-->
-      
+
                 </div><!--/card-->
             </div>
             <!-- /.col -->
@@ -317,7 +317,7 @@
       </div>
 
       <div class="modal-footer p-2">
- 
+
           <div class="container">
             <div class="row">
               <div class="col-md-12">
@@ -334,16 +334,16 @@
                   <div class="col-sm-3">
                     <input type="email" class="form-control form-control-sm" id="longitud" name="longitud" placeholder="Email">
                   </div>
-                
+
                 </div>
               </div>
             </div>
           </div> {{-- container --}}
-         
+
 
       </div><!-- /.modal-footer -->
 
-   
+
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -359,7 +359,7 @@
       alert('Error')
   }
 
-  function guardarpedido() { 
+  function guardarpedido() {
 
 
     let url = '{{url('')}}/pedido/store';
@@ -384,7 +384,7 @@
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: '!Si, solicitar!',
-  
+
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -416,7 +416,7 @@
                       }else{
                         var resultado= JSON.parse(resultado);
                         if(resultado.error){
-                          mostrarerror('error','Error de stock vuelva a intentar más tarde') 
+                          mostrarerror('error','Error de stock vuelva a intentar más tarde')
                         }else{
                           $('#completa_pedido').prop('disabled', true);
                           mostrarerror('success','Datos registrados correctamente');
@@ -425,14 +425,14 @@
                       }
                   }
               },
-              
+
           });
         }else{
-  
+
         }
     });
 
-  
+
     }
     function redirigir(){
       window.location.href ='{{url('')}}/card-checkout';
@@ -503,11 +503,11 @@ type="text/javascript" >
         break;
       }
       coords =  {
-        lng: '-17.34981426967225',
-        lat: '-63.262442186041355'
+         lng: '-17.33880027829229',
+         lat: '-63.26928059787751'
       };
-      document.getElementById("longitud").value = '-17.34981426967225';
-      document.getElementById("latitud").value =  '-63.262442186041355';
+      document.getElementById("longitud").value = '-17.33880027829229';
+      document.getElementById("latitud").value =  '-63.26928059787751';
       setMapa(coords);  //pasamos las coordenadas al metodo para crear el mapa
 
     },options);
@@ -588,9 +588,9 @@ type="text/javascript" >
 /*============================= FUNCION addUbicacion =================================*/
   function addUbicacion(x,y,dir)
   {
-    let latitud1=-63.256608;//latitud de la empresa
-    let longitud1=-17.334064;//longitud de la empresa
-  
+    let latitud1=-63.26928059787751;//latitud de la empresa
+    let longitud1=-17.33880027829229;//longitud de la empresa
+
     if( y!='' && x!=''){
       let url_ubicacion = 'https://maps.google.com/?q='+y+','+x
       $("#latitud_y").val(y);
@@ -604,7 +604,7 @@ type="text/javascript" >
 
       (calculateDistance(latitud1,longitud1,latitud2,longitud2));
       $('#maps').modal('hide');
-      toastr.success('Añadido','Gracias por darnos tu ubicacion!') 
+      toastr.success('Añadido','Gracias por darnos tu ubicacion!')
       // Swal.fire('Gracias por darnos tu ubicacion!', ' ','success')
     }else{
       Swal.fire('Seleccione su ubicacion por favor', ' ','error')
@@ -637,7 +637,7 @@ type="text/javascript" >
   }else{
       var origin = response.originAddresses[0];
       var destination = response.destinationAddresses[0];
-      
+
       if (response.rows[0].elements[0].status === "ZERO_RESULTS"){
           $('#textTiempo').val("No hay distancia para  "  + origin + " and " + destination);
           console.log(origin);

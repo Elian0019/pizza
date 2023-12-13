@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2023 a las 17:13:18
+-- Tiempo de generación: 13-12-2023 a las 09:02:41
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -88,7 +88,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nombre`, `apellidos`, `edad`, `telefono`, `id_usuario`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Elian', 'Alvarez ', 21, 71781881, 2, 1, '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(1, 'Elian', 'Alvarez ', 21, 71781881, 2, 1, '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 
@@ -285,7 +285,7 @@ CREATE TABLE `pempresas` (
 --
 
 INSERT INTO `pempresas` (`id`, `razonsocial`, `created_at`, `updated_at`) VALUES
-(4, 'comerciante de Coca cola', '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(4, 'comerciante de Coca cola', '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 
@@ -308,73 +308,73 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `subname`, `tipo`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'catalogo', 'catalogo principal', 1, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(2, 'usuario', 'usuario principal', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(3, 'usuario.editar', 'editar usuarios', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(4, 'usuario.eliminar', 'eliminar usuarios', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(5, 'usuario.agregar', 'agregar usuarios', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(6, 'usuario.eliminados', 'ver usuarios eliminados', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(7, 'usuario.restore', 'restaurar usuarios eliminados', 2, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(8, 'rol', 'rol principal', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(9, 'rol.editar', 'editar rol', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(10, 'rol.eliminar', 'eliminar rol', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(11, 'rol.agregar', 'agregar rol', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(12, 'rol.eliminados', 'ver rol eliminados', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(13, 'rol.restore', 'restaurar rol eliminados', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(14, 'rol.permiso', 'ver permisos del rol', 3, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(15, 'provedor', 'provedor principal', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(16, 'provedor.editar', 'editar provedor', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(17, 'provedor.eliminar', 'eliminar provedor', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(18, 'provedor.agregar', 'agregar provedor', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(19, 'provedor.eliminados', 'ver provedor eliminados', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(20, 'provedor.restore', 'restaurar provedor eliminados', 4, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(21, 'cliente', 'cliente principal', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(22, 'cliente.editar', 'editar cliente', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(23, 'cliente.eliminar', 'eliminar cliente', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(24, 'cliente.agregar', 'agregar cliente', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(25, 'cliente.eliminados', 'ver cliente eliminados', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(26, 'cliente.restore', 'restaurar cliente eliminados', 5, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(27, 'categoria', 'categoria principal', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(28, 'categoria.editar', 'editar categoria', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(29, 'categoria.eliminar', 'eliminar categoria', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(30, 'categoria.agregar', 'agregar categoria', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(31, 'categoria.eliminados', 'ver categoria eliminados', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(32, 'categoria.restore', 'restaurar categoria eliminados', 6, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(33, 'ingrediente', 'ingrediente principal', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(34, 'ingrediente.editar', 'editar ingrediente', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(35, 'ingrediente.eliminar', 'eliminar ingrediente', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(36, 'ingrediente.agregar', 'agregar ingrediente', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(37, 'ingrediente.eliminados', 'ver ingrediente eliminados', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(38, 'ingrediente.restore', 'restaurar ingrediente eliminados', 7, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(39, 'empleado', 'empleado principal', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(40, 'empleado.editar', 'editar empleado', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(41, 'empleado.eliminar', 'eliminar empleado', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(42, 'empleado.agregar', 'agregar empleado', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(43, 'empleado.eliminados', 'ver empleado eliminados', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(44, 'empleado.restore', 'restaurar empleado eliminados', 8, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(45, 'repartidor', 'repartidor principal', 9, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(46, 'repartidor.editar', 'editar repartidor', 9, 'web', '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(47, 'repartidor.eliminar', 'eliminar repartidor', 9, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(48, 'repartidor.agregar', 'agregar repartidor', 9, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(49, 'repartidor.eliminados', 'ver repartidor eliminados', 9, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(50, 'repartidor.restore', 'restaurar repartidor eliminados', 9, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(51, 'reporte', 'reporte principal', 10, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(52, 'reporte.stock_minimo', 'mostrar reporte de stock minimos', 10, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(53, 'reporte.rango_de_fechas', 'mostrar reportes con rango de fechas', 10, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(54, 'grafico', 'mostrar graficos de promedios', 11, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(55, 'pedido', 'pedido principal', 12, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(56, 'pedido.editar', 'mostrar editar pedidos', 12, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(57, 'pedido.solicitudes', 'permitir aceptar solicitudes', 12, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(58, 'pedido.asignar', 'asignar repartidor a pedidos', 12, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(59, 'produccion', 'produccion principal', 13, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(60, 'produccion.nuevo', 'crear produccion', 13, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(61, 'produccion.terminados', 'ver estado de produccion', 13, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(62, 'producto', 'producto principal', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(63, 'producto.editar', 'editar producto', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(64, 'producto.eliminar', 'eliminar producto', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(65, 'producto.agregar', 'agregar producto', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(66, 'producto.eliminados', 'ver producto eliminados', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(67, 'producto.restore', 'restaurar producto eliminados', 14, 'web', '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(1, 'catalogo', 'catalogo principal', 1, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(2, 'usuario', 'usuario principal', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(3, 'usuario.editar', 'editar usuarios', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(4, 'usuario.eliminar', 'eliminar usuarios', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(5, 'usuario.agregar', 'agregar usuarios', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(6, 'usuario.eliminados', 'ver usuarios eliminados', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(7, 'usuario.restore', 'restaurar usuarios eliminados', 2, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(8, 'rol', 'rol principal', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(9, 'rol.editar', 'editar rol', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(10, 'rol.eliminar', 'eliminar rol', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(11, 'rol.agregar', 'agregar rol', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(12, 'rol.eliminados', 'ver rol eliminados', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(13, 'rol.restore', 'restaurar rol eliminados', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(14, 'rol.permiso', 'ver permisos del rol', 3, 'web', '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(15, 'provedor', 'provedor principal', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(16, 'provedor.editar', 'editar provedor', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(17, 'provedor.eliminar', 'eliminar provedor', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(18, 'provedor.agregar', 'agregar provedor', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(19, 'provedor.eliminados', 'ver provedor eliminados', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(20, 'provedor.restore', 'restaurar provedor eliminados', 4, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(21, 'cliente', 'cliente principal', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(22, 'cliente.editar', 'editar cliente', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(23, 'cliente.eliminar', 'eliminar cliente', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(24, 'cliente.agregar', 'agregar cliente', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(25, 'cliente.eliminados', 'ver cliente eliminados', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(26, 'cliente.restore', 'restaurar cliente eliminados', 5, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(27, 'categoria', 'categoria principal', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(28, 'categoria.editar', 'editar categoria', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(29, 'categoria.eliminar', 'eliminar categoria', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(30, 'categoria.agregar', 'agregar categoria', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(31, 'categoria.eliminados', 'ver categoria eliminados', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(32, 'categoria.restore', 'restaurar categoria eliminados', 6, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(33, 'ingrediente', 'ingrediente principal', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(34, 'ingrediente.editar', 'editar ingrediente', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(35, 'ingrediente.eliminar', 'eliminar ingrediente', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(36, 'ingrediente.agregar', 'agregar ingrediente', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(37, 'ingrediente.eliminados', 'ver ingrediente eliminados', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(38, 'ingrediente.restore', 'restaurar ingrediente eliminados', 7, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(39, 'empleado', 'empleado principal', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(40, 'empleado.editar', 'editar empleado', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(41, 'empleado.eliminar', 'eliminar empleado', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(42, 'empleado.agregar', 'agregar empleado', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(43, 'empleado.eliminados', 'ver empleado eliminados', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(44, 'empleado.restore', 'restaurar empleado eliminados', 8, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(45, 'repartidor', 'repartidor principal', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(46, 'repartidor.editar', 'editar repartidor', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(47, 'repartidor.eliminar', 'eliminar repartidor', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(48, 'repartidor.agregar', 'agregar repartidor', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(49, 'repartidor.eliminados', 'ver repartidor eliminados', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(50, 'repartidor.restore', 'restaurar repartidor eliminados', 9, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(51, 'reporte', 'reporte principal', 10, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(52, 'reporte.stock_minimo', 'mostrar reporte de stock minimos', 10, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(53, 'reporte.rango_de_fechas', 'mostrar reportes con rango de fechas', 10, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(54, 'grafico', 'mostrar graficos de promedios', 11, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(55, 'pedido', 'pedido principal', 12, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(56, 'pedido.editar', 'mostrar editar pedidos', 12, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(57, 'pedido.solicitudes', 'permitir aceptar solicitudes', 12, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(58, 'pedido.asignar', 'asignar repartidor a pedidos', 12, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(59, 'produccion', 'produccion principal', 13, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(60, 'produccion.nuevo', 'crear produccion', 13, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(61, 'produccion.terminados', 'ver estado de produccion', 13, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(62, 'producto', 'producto principal', 14, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(63, 'producto.editar', 'editar producto', 14, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(64, 'producto.eliminar', 'eliminar producto', 14, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(65, 'producto.agregar', 'agregar producto', 14, 'web', '2023-12-13 08:02:26', '2023-12-13 08:02:26'),
+(66, 'producto.eliminados', 'ver producto eliminados', 14, 'web', '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(67, 'producto.restore', 'restaurar producto eliminados', 14, 'web', '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 
@@ -413,9 +413,9 @@ CREATE TABLE `ppersonas` (
 --
 
 INSERT INTO `ppersonas` (`id`, `nombre`, `apellidos`, `created_at`, `updated_at`) VALUES
-(1, 'Marcelo', 'quiroga', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(2, 'juan', 'torrez', '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(3, 'fernando', 'mamani', '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(1, 'Marcelo', 'quiroga', '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(2, 'juan', 'torrez', '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(3, 'fernando', 'mamani', '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 
@@ -490,10 +490,10 @@ CREATE TABLE `provedores` (
 --
 
 INSERT INTO `provedores` (`id`, `direccion`, `telefono`, `correo`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'santa cruz de la sierra', 823822, 'marcelo@gmail.com', 1, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(2, 'santa cruz de la sierra', 64532123, 'juan@gmail.com', 1, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(3, 'minero', 64532, 'fernando@gmail.com', 1, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(4, 'montero av. avaroa', 322465, 'cocacolac@gmail.com', 1, '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(1, 'santa cruz de la sierra', 823822, 'marcelo@gmail.com', 1, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(2, 'santa cruz de la sierra', 64532123, 'juan@gmail.com', 1, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(3, 'minero', 64532, 'fernando@gmail.com', 1, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(4, 'montero av. avaroa', 322465, 'cocacolac@gmail.com', 1, '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 
@@ -517,8 +517,8 @@ CREATE TABLE `repartidores` (
 --
 
 INSERT INTO `repartidores` (`id`, `nombre`, `apellidos`, `edad`, `telefono`, `nro_licencia`, `estado`, `id_usuario`) VALUES
-(1, 'Ariel', 'censo', 21, '67628811', 'Categoria A', 1, 3),
-(2, 'Luis', 'Calderon', 21, '76521212', 'Categoria A', 1, 4);
+(1, 'Deniss', 'Montero Melgar', 21, '67628811', 'Categoria A', 1, 3),
+(2, 'Luis Fernando', 'Calderon', 21, '76521212', 'Categoria A', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -540,10 +540,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Administrador', 'web', 1, '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(2, 'Cliente', 'web', 1, '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(3, 'Repartidor', 'web', 1, '2023-12-06 01:40:38', '2023-12-06 01:40:38'),
-(4, 'Recepcionesta', 'web', 1, '2023-12-06 01:40:38', '2023-12-06 01:40:38');
+(1, 'Administrador', 'web', 1, '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(2, 'Cliente', 'web', 1, '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(3, 'Repartidor', 'web', 1, '2023-12-13 08:02:25', '2023-12-13 08:02:25'),
+(4, 'Recepcionesta', 'web', 1, '2023-12-13 08:02:25', '2023-12-13 08:02:25');
 
 -- --------------------------------------------------------
 
@@ -691,10 +691,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$KzXrA.GRK4hRIly/YY.DZO20C/i.tBjBWZa/3kepzDgPzOOfsqHvy', 1, NULL, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(2, 'elian', 'elian@gmail.com', NULL, '$2y$10$ls89LQP5xDDbzJ4FK8nzw./p0rkSHWq8RZBiMgVgFLj6.z7ER3lve', 1, NULL, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(3, 'Ariel', 'ariel@gmail.com', NULL, '$2y$10$ZIz2ZMMpd1wIUIfBooPUietm6UjT9shdRP/7jON2Dmi.2U9I6h3KO', 1, NULL, '2023-12-06 01:40:39', '2023-12-06 01:40:39'),
-(4, 'luis', 'luis@gmail.com', NULL, '$2y$10$tGREebvcZI46ADkblRFXjefGKSIF61N334u5Xu5Jv6seZmT7OuzkS', 1, NULL, '2023-12-06 01:40:39', '2023-12-06 01:40:39');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$jASu1TD93YwMNjkptV8MHu5HofRAHQ0qItj1taFWoLhEcQ38HPo4m', 1, NULL, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(2, 'elian', 'elian@gmail.com', NULL, '$2y$10$JvOyglhwMSbgHLhORDFPzeUG1gNLIVY7MLKy0AeC/ivYjRqTFdalG', 1, NULL, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(3, 'Deniss', 'deniss@gmail.com', NULL, '$2y$10$YK.VbcR4qFc0r.bKXYdqNOewFaol.RnT6/Qua2tFjyNZLOh2UO45a', 1, NULL, '2023-12-13 08:02:27', '2023-12-13 08:02:27'),
+(4, 'luis fernando', 'luis@gmail.com', NULL, '$2y$10$4YK4e6bpP0nXmcspCBdbzuhF1NdvHVFK5jmTzjq2tY/CjRyv1uCh2', 1, NULL, '2023-12-13 08:02:27', '2023-12-13 08:02:27');
 
 -- --------------------------------------------------------
 

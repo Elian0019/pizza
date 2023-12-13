@@ -196,6 +196,7 @@ Route::controller(PedidoController::class)->group(function (){
     Route::post('/pedido/editar','update')->name('pedido.update');
     Route::get('/pedido/ordenes','orders')->name('pedido.ordenes');
     Route::put('/pedido/cancelar','cancelarsolicitud')->name('pedido.cancelar');
+    Route::get('/pedido/verdetallepedido/{id_pedido}','verpedido')->name('ver.pedido');
 });
 
 Route::controller(VentaController::class)->group(function (){
@@ -204,6 +205,7 @@ Route::controller(VentaController::class)->group(function (){
     Route::get('venta/delete/{id}','delete')->name('venta.delete');
    Route::post('venta/store','store')->name('venta.store');
    Route::get('venta/detalle/{id_venta}','pdf_detalle')->name('venta.detalle');
+   Route::get('venta/verdetalle/{id_venta}','verdetalle')->name('ver.detalle');
   // Route::post('venta/editar','update')->name('venta.update');
   //  Route::get('venta/ordenes','orders')->name('venta.ordenes');
   //  Route::put('venta/cancelar','cancelarsolicitud')->name('venta.cancelar');
